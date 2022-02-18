@@ -2,6 +2,15 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+stages:
+- stage: string # Required as first property. ID of the stage. 
+  displayName: string # Human-readable name for the stage. 
+  pool: pool # Pool where jobs in this stage will run unless otherwise specified
+  dependsOn: string | [ string ]  # Any stages which must complete before this one
+  condition: string # Evaluate this condition expression to determine whether to run this stage. 
+  variables: variables # Stage-specific variables
+  jobs: [ job | deployment | template ]
+  lockBehavior: string # Behavior lock requests from this stage should exhibit in relation to other exclusive lock requests.  (runLatest,sequential)
 
 trigger:
 - main
