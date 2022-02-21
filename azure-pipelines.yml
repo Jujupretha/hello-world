@@ -18,28 +18,3 @@ steps:
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
   # this pipeline has one implicit stage
-jobs:
-- job: A
-  steps:
-  - bash: echo "A"
-
-- job: B
-  steps:
-  - bash: echo "B"
-  stages:
-- stage: A
-  jobs:
-  - job: A1
-  - job: A2
-
-- stage: B
-  jobs:
-  - job: B1
-  - job: B2
-stages:
-- stage: A
-  pool: StageAPool
-  jobs:
-  - job: A1 # will run on "StageAPool" pool based on the pool defined on the stage
-  - job: A2 # will run on "JobPool" pool
-    pool: JobPool
